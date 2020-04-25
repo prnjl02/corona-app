@@ -1,0 +1,24 @@
+
+
+  /*card - material */
+  .example-card {
+    max-width: 400px;
+  }
+  .mat-card-title{
+   color:brown   
+  }
+  .deaths{
+      color:red
+  }
+  .active_cases{
+      color:green
+  }
+  .date{
+      color:blue
+  }
+  /* .example-header-image {
+    background-image: url('assets/india.png');
+    background-size: cover;
+  } */
+
+  
