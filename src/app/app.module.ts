@@ -5,6 +5,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
 
   declarations: [
@@ -15,7 +19,12 @@ import {MatCardModule} from '@angular/material/card';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule
+    
 
   ],
   providers: [],
