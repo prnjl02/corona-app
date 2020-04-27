@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import {ThemePalette} from '@angular/material/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {startWith, map} from 'rxjs/operators';
+import {MatDialog} from "@angular/material/dialog";
+import { DialogDataComponent } from '../dialog-data/dialog-data.component';
+import {MatDialogConfig} from "@angular/material/dialog";
 
 
 export interface StateGroup {
@@ -20,10 +24,13 @@ export const _filter = (opt: string[], value: string): string[] => {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  otherTheme = false;
+  color: ThemePalette = 'warn';
   stateForm: FormGroup = this._formBuilder.group({
     stateGroup: '',
   });
+
+  stateName='';
 
   stateGroups: StateGroup[] = [{
     letter: 'A',
@@ -85,21 +92,64 @@ export class HomeComponent implements OnInit {
   }];
 
   stateGroupOptions: Observable<StateGroup[]>;
-
-   data = {};
-   see=false;
-   final=[];;
+  data = {};
+  final=[];
+  imgSrc=[
+    "./assets/wholeindia.jpg",
+     "./assets/mh.png",
+     "./assets/gj.jpg",
+     "./assets/delhi.jpg",
+     "./assets/rj.jpg",
+     "./assets/mp.png",
+     "./assets/tn.jpg",
+     "./assets/up.png",
+     "./assets/ap.jpg",
+     "./assets/telangana.jpg",  
+     "./assets/wb.jpg", 
+     "./assets/jammu.png",
+     "./assets/karnataka.jpg",
+     "./assets/kerala.png",
+     "./assets/pun.png",
+     "./assets/har.jpg",
+     "./assets/bihar.png",
+     "./assets/ori.png",
+     "./assets/jk.jpg",
+     "./assets/uk.png",
+     "./assets/hp.jpg",
+     "./assets/ch.jpg",
+     "./assets/assam.jpg",
+     "./assets/chand.jpg",
+     "./assets/anni.jpg",   
+     "./assets/ladakh.png",
+     "./assets/megha.png",
+     "./assets/pudu.jpg",
+     "./assets/goa.jpg",
+     "./assets/mani.jpg",
+     "./assets/tripura.jpg",
+     "./assets/mizo.png",
+     "./assets/aruna.png",
+     "./assets/naga.png",
+     "./assets/dnn.jpg",
+     "./assets/daman.jpg",
+     "./assets/laksh.jpg",
+     "./assets/sikk.png"
+   ]
    //respData={};
-  constructor(private dataService:DataService,private _formBuilder: FormBuilder) { }
+  constructor(private dataService:DataService,private _formBuilder: FormBuilder,
+    public dialog:MatDialog) { }
 
   ngOnInit(): void {
-  this.dataService.getDailyData().subscribe(
-    (respData)=>{
-      this.data=respData
-  this.final.push(respData["statewise"]);
-  },
-    error=>{console.log(error)}
-  )
+    this.dataService.getDailyData().subscribe(
+      (respData)=>{
+        this.data=respData;
+        this.final.push(...respData["statewise"]);
+        this.final.map((key,idx)=>{
+         key.src = this.imgSrc[idx];
+        });
+        console.log(this.final);
+    },
+      error=>{console.log(error)}
+    )
 
 // autocomplete code
 this.stateGroupOptions = this.stateForm.get('stateGroup')!.valueChanges
@@ -124,8 +174,20 @@ private _filterGroup(value: string): StateGroup[] {
 }
 // code ends
 
-seeDetails(name){
-  alert('hiii'+name)
+seeData(stateName:string){
+ //alert(stateName);
+// this.dialog.open(DialogDataComponent,{data:'statename'})
+const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "50%";
+    dialogConfig.data=stateName;
+    this.dialog.open(DialogDataComponent, dialogConfig);
+
 }
 
+changeTheme(){
+  //alert('clicked me!!!!!')
+  this.otherTheme = !this.otherTheme;
+ }
 }

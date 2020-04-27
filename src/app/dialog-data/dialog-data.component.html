@@ -1,0 +1,24 @@
+<h2 mat-dialog-title style="text-align: center;color:brown">{{stateName}}</h2>
+<mat-dialog-content>
+
+    <mat-card class="card">
+        <!-- <mat-card-header>
+          <mat-card-title>{{data.state}}</mat-card-title>
+        </mat-card-header> -->
+        <!-- <img mat-card-img class="img" src={{data.src}} alt="{{data.src}}"> -->
+        <mat-card-content style="text-align: center;">
+          <p class="active_cases">
+            Active Cases : {{stateObject['active']}}
+          </p>
+          <p>Total Cases :{{stateObject['confirmed']}} </p>
+          <p class="deaths">Total Deaths : {{stateObject['deaths']}}</p>
+          <p>Total Recovered Cases : {{stateObject['recovered']}} </p>
+          <p class="date">Data true as of : {{stateObject['date']}}</p>
+        </mat-card-content>
+      </mat-card>
+    
+
+</mat-dialog-content>
+<mat-dialog-actions>
+<button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

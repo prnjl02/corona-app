@@ -1,13 +1,29 @@
+<div [class.alternative]="otherTheme"> 
 <div style="margin-bottom:10%">
-<div>
+<!-- <div>
    <span><img src="assets/stay_safe.jpg" alt="Stay Safe Image" style="margin-left:17%"></span> 
     
     <span><h2 style="margin-left:38%;margin-right:40%;margin-top:-8%;color:teal">Stay Home , Stay Safe !!!!!!!</h2></span>
-</div>
+</div> -->
+
+<mat-toolbar class="toolbar" color="primary">
+  <mat-toolbar-row>
+  <span><img src="assets/stay_safe.jpg" alt="Stay Safe Image" style="margin-left:17%"></span>
+  <span style="margin-left:5%;">
+    <h2>Stay Home , Stay Safe !!</h2>
+  </span>
+  </mat-toolbar-row>
+  </mat-toolbar> 
+  <mat-slide-toggle 
+      class="example-margin" 
+      [color]="color" 
+     (click)="changeTheme()">
+    Toggle Theme!
+  </mat-slide-toggle>
 
 
 <!--auto complete search box-->
-<div style="float:right;margin-right:100px"  class="custom-wrapper-example">
+ <div style="float:right;margin-right:100px"  class="custom-wrapper-example">
 <form [formGroup]="stateForm">
   <mat-form-field>
     <input type="text"
@@ -15,6 +31,7 @@
            placeholder="Search for any state"
            formControlName="stateGroup"
            required
+           [(ngModel)]="stateName"
            [matAutocomplete]="autoGroup">
       <mat-autocomplete #autoGroup="matAutocomplete">
         <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
@@ -24,209 +41,27 @@
       </mat-optgroup>
     </mat-autocomplete>
   </mat-form-field>
-  <button mat-raised-button color="primary" style="margin-left:20px" (click)="seeDetails(name)">name</button>
+  <button mat-raised-button color="primary" style="margin-left:20px" (click)="seeData(stateName)">See Data</button>
 </form>
 </div>
 
 </div>
     <!--card - material-->
 
-    <div style="float:left;">
-        <mat-card class="example-card">
-            <mat-card-header>
-              <!-- <div mat-card-avatar class="example-header-image"></div> -->
-              <mat-card-title>Total</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="assets/india.jpg" alt="Delhi">
-            <mat-card-content>
-              <p class="active_cases">
-                Active Cases :   {{final[0][0].active}} 
-              </p>
-              <p>Total Cases :  {{final[0][0].confirmed}}</p>
-              <p class="deaths">Total Deaths : {{final[0][0].deaths}}</p>
-              <p>Total Recovered Cases : {{final[0][0].recovered}} </p>
-              <p class="date">Data true as of : {{final[0][0].lastupdatedtime}}</p>
-          
-            </mat-card-content>
-          </mat-card>
-          
-    
-    </div>
-
-    <div style="float:left;margin-left:5%">
-        <mat-card class="example-card">
-            <mat-card-header>
-              <mat-card-title>Maharashtra</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="assets/mh.jpg" alt="Total">
-            <mat-card-content>
-              <p class="active_cases">
-                Active Cases :   {{final[0][1].active}} 
-              </p>
-              <p>Total Cases :  {{final[0][1].confirmed}}</p>
-              <p class="deaths">Total Deaths : {{final[0][1].deaths}}</p>
-              <p>Total Recovered Cases : {{final[0][1].recovered}} </p>
-              <p class="date">Data true as of : {{final[0][1].lastupdatedtime}}</p>
-          
-            </mat-card-content>
-          </mat-card>
-          
-    
-    </div>
-
-    
-    <div style="float:left;margin-left:5%">
-        <mat-card class="example-card">
-            <mat-card-header>
-              <mat-card-title>Delhi</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="assets/delhi.png" alt="Total">
-            <mat-card-content>
-              <p class="active_cases">
-                Active Cases :   {{final[0][2].active}} 
-              </p>
-              <p>Total Cases :  {{final[0][2].confirmed}}</p>
-              <p class="deaths">Total Deaths : {{final[0][2].deaths}}</p>
-              <p>Total Recovered Cases : {{final[0][2].recovered}} </p>
-              <p class="date">Data true as of : {{final[0][2].lastupdatedtime}}</p>
-          
-            </mat-card-content>
-          </mat-card>
-          
-    
-    </div>
-   
-
-      
-    <div style="float:left;margin-left:5%">
-        <mat-card class="example-card">
-            <mat-card-header>
-              <mat-card-title>Rajasthan</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="assets/gj.jpg" alt="Gujrat">
-            <mat-card-content>
-              <p class="active_cases">
-                Active Cases :   {{final[0][3].active}} 
-              </p>
-              <p>Total Cases :  {{final[0][3].confirmed}}</p>
-              <p class="deaths">Total Deaths : {{final[0][3].deaths}}</p>
-              <p>Total Recovered Cases : {{final[0][3].recovered}} </p>
-              <p class="date">Data true as of : {{final[0][3].lastupdatedtime}}</p>
-          
-            </mat-card-content>
-          </mat-card>
-          
-    
-    </div> 
-       
-
-    <!-- <div style="float:left;margin-left:5px">
-        <mat-card class="example-card">
-            <mat-card-header>
-              <mat-card-title>Uttar Pradesh</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="assets/up.png" alt="Gujrat">
-            <mat-card-content>
-              <p class="active_cases">
-                Active Cases :   {{final[0][6].active}} 
-              </p>
-              <p>Total Cases :  {{final[0][6].confirmed}}</p>
-              <p class="deaths">Total Deaths : {{final[0][6].deaths}}</p>
-              <p>Total Recovered Cases : {{final[0][6].recovered}} </p>
-              <p class="date">Data true as of : {{final[0][6].lastupdatedtime}}</p>
-          
-            </mat-card-content>
-          </mat-card>
-          
-    
-    </div> -->
+    <mat-card class="card" *ngFor="let data of final">
+      <mat-card-header>
+        <mat-card-title>{{data.state}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-img class="img" src={{data.src}} alt="{{data.src}}">
+      <mat-card-content>
+        <p class="active_cases">
+          Active Cases : {{data.active}}
+        </p>
+        <p>Total Cases : {{data.confirmed}}</p>
+        <p class="deaths">Total Deaths : {{data.deaths}}</p>
+        <p>Total Recovered Cases : {{data.recovered}} </p>
+        <p class="date">Data true as of : {{data.lastupdatedtime}}</p>
+      </mat-card-content>
+    </mat-card>
   
-
-
-    <!-- <div style="float:left;margin-top:5%">
-        <mat-card class="example-card">
-            <mat-card-header>
-              <mat-card-title>Madhya Pradesh</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="assets/mp.png" alt="Gujrat">
-            <mat-card-content>
-              <p class="active_cases">
-                Active Cases :   {{final[0][5].active}} 
-              </p>
-              <p>Total Cases :  {{final[0][5].confirmed}}</p>
-              <p class="deaths">Total Deaths : {{final[0][5].deaths}}</p>
-              <p>Total Recovered Cases : {{final[0][5].recovered}} </p>
-              <p class="date">Data true as of : {{final[0][5].lastupdatedtime}}</p>
-          
-            </mat-card-content>
-          </mat-card>
-          
-    
-    </div> -->
-
-<!-- 
-    <div style="float:left;margin-top:5%;;margin-left:5px">
-        <mat-card class="example-card">
-            <mat-card-header>
-              <mat-card-title>Telangana</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="assets/telangana.jpg" alt="Gujrat">
-            <mat-card-content>
-              <p class="active_cases">
-                Active Cases :   {{final[0][7].active}} 
-              </p>
-              <p>Total Cases :  {{final[0][7].confirmed}}</p>
-              <p class="deaths">Total Deaths : {{final[0][7].deaths}}</p>
-              <p>Total Recovered Cases : {{final[0][7].recovered}} </p>
-              <p class="date">Data true as of : {{final[0][7].lastupdatedtime}}</p>
-          
-            </mat-card-content>
-          </mat-card>
-          
-    
-    </div> -->
-
-
-    <!-- <div style="float:left;margin-top:5%;;margin-left:5px">
-        <mat-card class="example-card">
-            <mat-card-header>
-              <mat-card-title>Andhra Pradesh</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="assets/ap.jpg" alt="Gujrat">
-            <mat-card-content>
-              <p class="active_cases">
-                Active Cases :   {{final[0][8].active}} 
-              </p>
-              <p>Total Cases :  {{final[0][8].confirmed}}</p>
-              <p class="deaths">Total Deaths : {{final[0][8].deaths}}</p>
-              <p>Total Recovered Cases : {{final[0][8].recovered}} </p>
-              <p class="date">Data true as of : {{final[0][8].lastupdatedtime}}</p>
-          
-            </mat-card-content>
-          </mat-card>
-          
-    
-    </div> -->
-
-
-    
-    <!-- <div style="float:left;margin-top:5%;;margin-left:5px">
-        <mat-card class="example-card">
-            <mat-card-header>
-              <mat-card-title>karnataka</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="assets/karnataka.jpg" alt="Gujrat">
-            <mat-card-content>
-              <p class="active_cases">
-                Active Cases :   {{final[0][9].active}} 
-              </p>
-              <p>Total Cases :  {{final[0][9].confirmed}}</p>
-              <p class="deaths">Total Deaths : {{final[0][9].deaths}}</p>
-              <p>Total Recovered Cases : {{final[0][9].recovered}} </p>
-              <p class="date">Data true as of : {{final[0][9].lastupdatedtime}}</p>
-          
-            </mat-card-content>
-          </mat-card>
-          
-    
-    </div> -->
+  </div>

@@ -1,12 +1,33 @@
-@import '~@angular/material/theming';
+// @import '~@angular/material/theming';
 
+// @include mat-core();
+
+// $my-theme-primary:mat-palette($mat-green);
+// $my-theme-accent:  mat-palette($mat-pink, A200, A100, A400);
+
+// $my-theme-warn:    mat-palette($mat-red);
+
+
+// $my-theme: mat-light-theme($my-theme-primary,$my-theme-accent,$my-theme-warn);
+// @include angular-material-theme($my-theme);
+
+@import "../node_modules/@angular/material/theming";
 @include mat-core();
 
-$my-theme-primary:mat-palette($mat-green);
-$my-theme-accent:  mat-palette($mat-pink, A200, A100, A400);
+$my-primary:mat-palette($mat-teal,800);
+$my-accent:mat-palette($mat-cyan ,800);
 
-$my-theme-warn:    mat-palette($mat-red);
+$my-theme:mat-light-theme($my-primary,$my-accent);
 
-
-$my-theme: mat-light-theme($my-theme-primary,$my-theme-accent,$my-theme-warn);
 @include angular-material-theme($my-theme);
+
+$alt-primary: mat-palette($mat-lime);
+$alt-accent: mat-palette($mat-pink, A200,A100,A400); //(color,defaultrangeofcolor,lightertone,darkertone)
+$alt-warn: mat-palette($mat-blue);
+$alt-theme:  mat-dark-theme($alt-primary, $alt-accent,$alt-warn);
+
+
+
+.alternative{
+    @include angular-material-theme($alt-theme);
+}

@@ -1,24 +1,35 @@
+.toolbar{
+  margin: 3% 0;
+}
+/* card - material */
+.mat-card-title{
+ color:rgb(42, 165, 124)   
+}
+.deaths{
+    color:red
+}
+.active_cases{
+    color:green
+}
+.date{
+    color:blue
+}
+.card{
+  display: inline-block;
+  height: 450px;
+  width: 300px;
+  padding: 8px; 
+  margin: 10px; 
+  text-align: center;
+}
+.img{
+  height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 
-
-  /*card - material */
-  .example-card {
-    max-width: 400px;
-  }
-  .mat-card-title{
-   color:brown   
-  }
-  .deaths{
-      color:red
-  }
-  .active_cases{
-      color:green
-  }
-  .date{
-      color:blue
-  }
-  /* .example-header-image {
-    background-image: url('assets/india.png');
-    background-size: cover;
-  } */
-
-  
+.example-margin {
+  margin: 0 84%;
+}
