@@ -146,7 +146,7 @@ export class HomeComponent implements OnInit {
         this.final.map((key,idx)=>{
          key.src = this.imgSrc[idx];
         });
-        console.log(this.final);
+       // console.log(this.final);
     },
       error=>{console.log(error)}
     )

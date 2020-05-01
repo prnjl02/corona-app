@@ -72,7 +72,7 @@ imgSrc=[
             this.stateObject['date']=this.final[i].lastupdatedtime;
           }
         }
-        console.log('final state data is :',this.stateObject);
+       // console.log('final state data is :',this.stateObject);
         // this.final.map((key,idx)=>{
         //  key.src = this.imgSrc[idx];
         // });
