@@ -94,49 +94,7 @@ export class HomeComponent implements OnInit {
   stateGroupOptions: Observable<StateGroup[]>;
   data = {};
   final=[];
-  // imgSrc=[
-  //   "./assets/wholeindia.jpg",
-  //    "./assets/mh.png",
-  //    "./assets/gj.jpg",
-  //    "./assets/delhi.jpg",
-  //    "./assets/rj.jpg",
-  //    "./assets/mp.png",
-  //    "./assets/tn.jpg",
-  //    "./assets/up.png",
-  //    "./assets/ap.jpg",
-  //    "./assets/telangana.jpg",
-  //    "./assets/wb.jpg",
-  //    "./assets/jammu.png",
-  //    "./assets/karnataka.jpg",
-  //    "./assets/kerala.png",
-  //    "./assets/pun.png",
-  //    "./assets/har.jpg",
-  //    "./assets/bihar.png",
-  //    "./assets/ori.png",
-  //    "./assets/jk.jpg",
-  //    "./assets/uk.png",
-  //    "./assets/hp.jpg",
-  //    "./assets/ch.jpg",
-  //    "./assets/assam.jpg",
-  //    "./assets/chand.jpg",
-  //    "./assets/anni.jpg",
-  //    "./assets/ladakh.png",
-  //    "./assets/megha.png",
-  //    "./assets/pudu.jpg",
-  //    "./assets/goa.jpg",
-  //    "./assets/mani.jpg",
-  //    "./assets/tripura.jpg",
-  //    "./assets/mizo.png",
-  //    "./assets/aruna.png",
-  //    "./assets/naga.png",
-  //    "./assets/dnn.jpg",
-  //    "./assets/daman.jpg",
-  //    "./assets/laksh.jpg",
-  //    "./assets/sikk.png"
-  //  ]
 
-
-   //respData={};
   constructor(private dataService:DataService,private _formBuilder: FormBuilder,
     public dialog:MatDialog) { }
 
@@ -149,11 +107,10 @@ export class HomeComponent implements OnInit {
         this.final.map((key,idx)=>{
           stateName=key.state
           console.log('statename',stateName)
-         //key.src = this.imgSrc[idx];
          key.src="./assets/"+stateName+".jpg"
          console.log('data is :',key)
         });
-       // console.log(this.final);
+
     },
       error=>{console.log(error)}
     )
@@ -182,8 +139,6 @@ private _filterGroup(value: string): StateGroup[] {
 // code ends
 
 seeData(stateName:string){
- //alert(stateName);
-// this.dialog.open(DialogDataComponent,{data:'statename'})
 const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
@@ -194,7 +149,6 @@ const dialogConfig = new MatDialogConfig();
 }
 
 changeTheme(){
-  //alert('clicked me!!!!!')
   this.otherTheme = !this.otherTheme;
  }
 }
