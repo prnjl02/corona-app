@@ -71,6 +71,8 @@
       <p class="deaths">Total Deaths : {{ data.deaths }}</p>
       <p>Total Recovered Cases : {{ data.recovered }}</p>
       <p class="date">Data true as of : {{ data.lastupdatedtime }}</p>
+      <p *ngIf="data.state=='Total'" style="color: green;"><strong> Today's Vaccinated Count: {{todayVaccineCount}}</strong></p>
+      <!-- <p *ngIf="data.state=='Total'"><strong> Total Vacicnated Count: {{totalVaccineCount}}</strong></p> -->
     </mat-card-content>
   </mat-card>
 </div>

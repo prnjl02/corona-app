@@ -25,6 +25,8 @@ export const _filter = (opt: string[], value: string): string[] => {
 export class HomeComponent implements OnInit {
   otherTheme = false;
   color: ThemePalette = "warn";
+  todayVaccineCount:any;
+  totalVaccineCount:any
   stateForm: FormGroup = this._formBuilder.group({
     stateGroup: "",
   });
@@ -143,6 +145,15 @@ export class HomeComponent implements OnInit {
       }
     );
 
+    // vaccination data code
+    this.dataService.getVaccinationDataToday().subscribe((res)=>this.todayVaccineCount=res['count']);
+
+setInterval(()=>{
+ this.dataService.getVaccinationDataToday().subscribe((data)=>this.todayVaccineCount=data['count'])
+},20000)
+
+this.dataService.getVaccinationDataTotal().subscribe((res)=>this.totalVaccineCount=res['count']);
+
     // autocomplete code
     this.stateGroupOptions = this.stateForm
       .get("stateGroup")!
@@ -181,4 +192,6 @@ export class HomeComponent implements OnInit {
   changeTheme() {
     this.otherTheme = !this.otherTheme;
   }
+
+
 }
